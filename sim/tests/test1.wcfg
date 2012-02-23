@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="./isim.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="testbench" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="7" />
+   <wvobject fp_name="/testbench/dut/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/dut/rst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/dut/clk_50" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_50</obj_property>
+      <obj_property name="ObjectShortName">clk_50</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/dut/clk_1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_1</obj_property>
+      <obj_property name="ObjectShortName">clk_1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/dut/reset_o" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">reset_o</obj_property>
+      <obj_property name="ObjectShortName">reset_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/dut/locked" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">locked</obj_property>
+      <obj_property name="ObjectShortName">locked</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/dut/blink" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">blink[7:0]</obj_property>
+      <obj_property name="ObjectShortName">blink[7:0]</obj_property>
+   </wvobject>
+</wave_config>
