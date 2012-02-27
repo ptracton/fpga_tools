@@ -6,8 +6,8 @@ The currnet FPGA boards I own/target:
 Digilent Nexys2
 Altera DE2-115
 
-The current plan for tools are:
-Xilinx ISIM
+The current plan for simulation tools are:
+Xilinx ISIM (working)
 Altera Modelsim
 Icarus Verilog 
 GPL CVER
