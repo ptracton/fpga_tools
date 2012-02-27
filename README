@@ -1,0 +1,18 @@
+<h1>FPGA TOOLS</h1>
+
+This project is a place to store a variety of python scripts use to simulate FPGA designs. These tools will allow me a simple way to run a simulation targetting either board and using a variety of tools. It is very possilbe to run xilinx specific designs in altera's modelsim and altera specific designs in xilinx's isim</p>
+
+The currnet FPGA boards I own/target:
+<ul>
+<li><a href="http://digilent.org/Products/Detail.cfm?Prod=NEXYS2">Digilent Nexys2</a></li>
+<li><a href="http://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&No=502">Altera DE2-115</a></li>
+</ul> 
+
+The current plan for tools are:
+<ul>
+<li> <a href="http://www.xilinx.com/products/design_tools/logic_design/verification/ise_simulator_faq.htm">Xilinx ISIM</a> </li>
+<li> <a href="http://www.altera.com/products/software/quartus-ii/modelsim/qts-modelsim-index.html">Altera Modelsim</a> </li>
+<li> <a href="http://iverilog.icarus.com/">Icarus Verilog </a></li>
+<li> <a href="http://gplcver.sourceforge.net/">GPL CVER</a> </li>
+<li> <a href="http://cadence.com">NCVerilog </a></li>
+</ul>
