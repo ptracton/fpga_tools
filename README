@@ -1,10 +1,21 @@
 FPGA TOOLS
 
-This project is a place to store a variety of python scripts use to simulate FPGA designs. These tools will allow me a simple way to run a simulation targetting either board and using a variety of tools. It is very possilbe to run xilinx specific designs in altera's modelsim and altera specific designs in xilinx's isim
+This project is a place to store a variety of python scripts use to simulate FPGA designs. These tools will allow me a simple way to run a simulation targetting either board and using a variety of tools. It is very possilbe to run xilinx specific designs in altera's modelsim and altera specific designs in xilinx's isim.  
+
+All of the interesting/useable code is in the bin directory.  The rest is a small test setup and demonstration of how to use these tools.  The directory structure is the recommended one to make sure things are working right.  The verilog code is pretty much non-sense but uses Xilinx and Altera specific blocks to demonstrate python script functionality.  The file run_sim.py is the real executable the rest are supporting libraries.
+
+Environment Variables
+XILINX should point into your Xilinx/<version>/ISE_DS/ISE directory.  For example mine is set to: /opt/Xilinx/12.2/ISE_DS/ISE
+ALTERA should point into altera/<version>/quartus directory.  For example mine is set to /opt/altera/11.1/quartus
+MODELSIM should point into altera/<version>/modelsim_ase.  For example mine is set to /opt/altera/11.1/modelsim_ase
+
+I have only run this on Linux, I have yet to try Cygwin or actual MS Windows with Active State Python.
 
 The currnet FPGA boards I own/target:
 Digilent Nexys2
 Altera DE2-115
+
+Since each simulation tool has a slightly different way of handling files, defines, and command line switches, I found it easy to create my own configuration file and then use python to generate the needed files/setup to run each of the following simulation tools.
 
 The current plan for simulation tools are:
 Xilinx ISIM (working)
