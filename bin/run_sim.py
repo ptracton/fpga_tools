@@ -23,6 +23,7 @@ import config_file
 import isim
 import modelsim
 import icarus
+import cver
 
 ##
 ## This is the entry point of the program.  Since this is the top program, we do not define classes in this file.
@@ -131,7 +132,7 @@ if __name__ == '__main__':
         Sim = icarus.icarus(opts, Cfg, args)
 
     if opts.cver:
-        print "cver to be done"
+        Sim = cver.cver(opts, Cfg, args)
         
     if opts.ncverilog:
         print "ncverilog to be done"
