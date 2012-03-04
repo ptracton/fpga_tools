@@ -19,9 +19,9 @@ Since each simulation tool has a slightly different way of handling files, defin
 
 The current plan for simulation tools are:
 Xilinx ISIM (working)
-Altera Modelsim
-Icarus Verilog 
-GPL CVER
+Altera Modelsim (working)
+Icarus Verilog (working for ASIC and Xilinx, fails to parse Altera MF files)
+GPL CVER (working for ASIC, fails to parse Xilinx and Altera files)
 NCVerilog 
 
 Development Platform:
