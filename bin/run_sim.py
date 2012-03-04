@@ -21,6 +21,7 @@ import sys
 import os
 import config_file
 import isim
+import modelsim
 
 ##
 ## This is the entry point of the program.  Since this is the top program, we do not define classes in this file.
@@ -120,7 +121,7 @@ if __name__ == '__main__':
     ## 1 tool is selected
     ##
     if opts.modelsim:
-        print "Modelsim to be done"
+        Modelsim = modelsim.modelsim(opts, Cfg, args)
 
     if opts.isim:
         Isim = isim.isim(opts, Cfg, args)
