@@ -121,10 +121,10 @@ if __name__ == '__main__':
     ## 1 tool is selected
     ##
     if opts.modelsim:
-        Modelsim = modelsim.modelsim(opts, Cfg, args)
+        Sim = modelsim.modelsim(opts, Cfg, args)
 
     if opts.isim:
-        Isim = isim.isim(opts, Cfg, args)
+        Sim = isim.isim(opts, Cfg, args)
 
     if opts.icarus:
         print "Icarus to be done"
@@ -135,7 +135,16 @@ if __name__ == '__main__':
     if opts.ncverilog:
         print "ncverilog to be done"
 
-       
+
+    ## Clean up the last run of the sim, do not want a mix of old and new data
+    Sim.clean_sim()
+    
+    ## Create the simulation directory, and put all needed files in it
+    Sim.generate_sim_files()
+    
+    ## Run the simulation
+    Sim.run_simulation()
+    
     ##
     ## All done, terminate program
     ##
