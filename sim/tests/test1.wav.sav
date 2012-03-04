@@ -1,0 +1,32 @@
+[timestart] 0
+[size] 1920 1003
+[pos] -1 -28
+*-20.408508 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] testbench.
+@200
+-TEST BENCH
+@28
+testbench.any_fail
+@22
+testbench.blink[7:0]
+@28
+testbench.clk_tb
+testbench.reset_tb
+testbench.sim_fail
+testbench.sim_pass
+testbench.sim_timeout
+testbench.thread_fail
+@22
+testbench.timeout_count[31:0]
+testbench.timeout_threshold[31:0]
+@200
+-DUT
+@23
+testbench.dut.blink[7:0]
+@29
+testbench.dut.clk
+testbench.dut.clk_1
+testbench.dut.clk_50
+testbench.dut.locked
+testbench.dut.reset_o
+testbench.dut.rst
