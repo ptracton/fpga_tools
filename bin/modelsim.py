@@ -159,8 +159,6 @@ class modelsim(sim_tool.sim_tool):
         for i in self.cfg.list_synthesis_files:
             f.write("vlog "+root+i.strip("'") + " " + include_string+" " + switch_string + " \n")
 
-
-
         f.write("vsim -voptargs=+acc work."+self.cfg.testbench+" " +switch_string+ " " +library+" \n")
 
         gui = self.test_path+"/"+self.test_name+".do"
@@ -168,7 +166,9 @@ class modelsim(sim_tool.sim_tool):
             print "GUI" + gui
             if os.path.exists(gui):
                 print "USING: " + gui
-                f.write("do "+gui+"\n")
+                f.write("do ../"+gui+"\n")
+            else:
+                print gui + " does not exist"
         
         f.write("run -all\n\n")        
         f.close()        
