@@ -22,6 +22,7 @@ import os
 import config_file
 import isim
 import modelsim
+import icarus
 
 ##
 ## This is the entry point of the program.  Since this is the top program, we do not define classes in this file.
@@ -127,7 +128,7 @@ if __name__ == '__main__':
         Sim = isim.isim(opts, Cfg, args)
 
     if opts.icarus:
-        print "Icarus to be done"
+        Sim = icarus.icarus(opts, Cfg, args)
 
     if opts.cver:
         print "cver to be done"
