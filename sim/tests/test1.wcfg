@@ -5,37 +5,95 @@
    <db_ref_list>
       <db_ref path="./isim.wdb" id="1" type="auto">
          <top_modules>
+            <top_module name="glbl" />
             <top_module name="testbench" />
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="7" />
-   <wvobject fp_name="/testbench/dut/clk" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
+   <WVObjectSize size="2" />
+   <wvobject fp_name="group19" type="group">
+      <obj_property name="label">TEST BENCH</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/testbench/any_fail" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">any_fail</obj_property>
+         <obj_property name="ObjectShortName">any_fail</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/blink" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">blink[7:0]</obj_property>
+         <obj_property name="ObjectShortName">blink[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/clk_tb" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_tb</obj_property>
+         <obj_property name="ObjectShortName">clk_tb</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/read_word" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">read_word[31:0]</obj_property>
+         <obj_property name="ObjectShortName">read_word[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/reset_tb" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">reset_tb</obj_property>
+         <obj_property name="ObjectShortName">reset_tb</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/sim_fail" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sim_fail</obj_property>
+         <obj_property name="ObjectShortName">sim_fail</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/sim_pass" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sim_pass</obj_property>
+         <obj_property name="ObjectShortName">sim_pass</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/sim_timeout" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sim_timeout</obj_property>
+         <obj_property name="ObjectShortName">sim_timeout</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/thread_fail" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">thread_fail</obj_property>
+         <obj_property name="ObjectShortName">thread_fail</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/timeout_count" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">timeout_count[31:0]</obj_property>
+         <obj_property name="ObjectShortName">timeout_count[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/timeout_threshold" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">timeout_threshold[31:0]</obj_property>
+         <obj_property name="ObjectShortName">timeout_threshold[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject fp_name="/testbench/dut/rst" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">rst</obj_property>
-      <obj_property name="ObjectShortName">rst</obj_property>
-   </wvobject>
-   <wvobject fp_name="/testbench/dut/clk_50" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">clk_50</obj_property>
-      <obj_property name="ObjectShortName">clk_50</obj_property>
-   </wvobject>
-   <wvobject fp_name="/testbench/dut/clk_1" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">clk_1</obj_property>
-      <obj_property name="ObjectShortName">clk_1</obj_property>
-   </wvobject>
-   <wvobject fp_name="/testbench/dut/reset_o" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">reset_o</obj_property>
-      <obj_property name="ObjectShortName">reset_o</obj_property>
-   </wvobject>
-   <wvobject fp_name="/testbench/dut/locked" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">locked</obj_property>
-      <obj_property name="ObjectShortName">locked</obj_property>
-   </wvobject>
-   <wvobject fp_name="/testbench/dut/blink" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">blink[7:0]</obj_property>
-      <obj_property name="ObjectShortName">blink[7:0]</obj_property>
+   <wvobject fp_name="group27" type="group">
+      <obj_property name="label">DUT</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/testbench/dut/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/clk_50" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_50</obj_property>
+         <obj_property name="ObjectShortName">clk_50</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/clk_1" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_1</obj_property>
+         <obj_property name="ObjectShortName">clk_1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/reset_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">reset_o</obj_property>
+         <obj_property name="ObjectShortName">reset_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/locked" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">locked</obj_property>
+         <obj_property name="ObjectShortName">locked</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/blink" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">blink[7:0]</obj_property>
+         <obj_property name="ObjectShortName">blink[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
    </wvobject>
 </wave_config>

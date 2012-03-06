@@ -30,3 +30,5 @@ XEmacs
 Xilinx ISE 12.2
 Altera QuartusII/Modelsim 11.1
 Python 2.6.5
+
+git remote add sim/tests/test1.do sim/tests/test1.wav.sav  git@github.com:ptracton/fpga_tools.git
