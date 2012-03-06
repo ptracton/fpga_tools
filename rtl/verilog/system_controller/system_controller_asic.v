@@ -8,6 +8,14 @@
 // Update Count    : 0
 // Status          : Unknown, Use with caution!
 
+
+//
+// NCVERILOG fails to get the right timescale for this file.  This hack gets around this issue
+//
+`ifdef NCVERILOG
+`include "timescale.v"
+`endif
+
 module system_controller(
 			 input wire clk_i,
 			 output wire clk_50,

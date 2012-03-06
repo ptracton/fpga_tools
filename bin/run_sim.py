@@ -24,6 +24,7 @@ import isim
 import modelsim
 import icarus
 import cver
+import ncverilog
 
 ##
 ## This is the entry point of the program.  Since this is the top program, we do not define classes in this file.
@@ -135,7 +136,7 @@ if __name__ == '__main__':
         Sim = cver.cver(opts, Cfg, args)
         
     if opts.ncverilog:
-        print "ncverilog to be done"
+        Sim = ncverilog.ncverilog(opts, Cfg, args)
 
 
     ## Clean up the last run of the sim, do not want a mix of old and new data

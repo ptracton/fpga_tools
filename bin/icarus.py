@@ -50,7 +50,7 @@ class icarus(sim_tool.sim_tool):
         This function will generate the self.sim_file_list contents.  These contents are then fed
         to the simulation tool to run the sim
         '''
-        print "\nISIM Generate SIM Files"
+        print "\nICARUS Generate SIM Files"
 
         ## update the root since we are going to CD one more level down
         root = self.cfg.root+"../"
