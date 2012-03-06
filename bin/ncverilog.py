@@ -165,16 +165,16 @@ class ncverilog(sim_tool.sim_tool):
         ## in the right location
         ##
         if self.opts.gui:
-            print "RUNNING GUI GTKWAVE"
-            gui_wave = self.cfg.root+"/tests/"+self.test_name+".wav.sav"
+            print "RUNNING GUI Simvision"
+            gui_wave = self.cfg.root+"/tests/"+self.test_name+".sv"
             if not os.path.exists(gui_wave):
                 print gui_wave + " FILE NOT FOUND"
                 gui_wave = ""
                 
             print "WAVE FILE: " + gui_wave
                        
-            gui_executable = self.get_executable("gtkwave")
-            command = gui_executable +" dump.vcd " + gui_wave
+            gui_executable = self.get_executable("simvision")
+            command = gui_executable +" -input " + gui_wave
             print command
             os.system(command)            
 
