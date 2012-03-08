@@ -63,6 +63,14 @@ class icarus(sim_tool.sim_tool):
             print "Failed to make " + self.sim_dir
             sys.exit(1)
 
+        ##
+        ## If we are doing some kind of SOC with a CPU and FW, build the firmware
+        ##
+        self.build_firmware()
+        verilog_files = self.find_verilog_files(self.sim_dir)
+        print verilog_files
+
+
         ## copy the test verilog file to the test run directory and rename it stimulus.v
         ## we rename the file because our testbench includes stimulus.v this will allow us
         ## to make a lot of different tests and not have to modify the testbench to run each one
@@ -122,6 +130,9 @@ class icarus(sim_tool.sim_tool):
 
         for i in self.cfg.list_synthesis_files:
             f.write(root+i.strip("'")+"\n")
+
+        for i in verilog_files:
+            f.write(i.strip("'")+"\n")
 
         f.close()        
 

@@ -126,6 +126,7 @@ if __name__ == '__main__':
     project_dirs = []
     project_dirs.append(project_name+"/bench/verilog/behavioral")
     project_dirs.append(project_name+"/bench/verilog/includes")
+    project_dirs.append(project_name+"/bench/verilog/tasks")
     project_dirs.append(project_name+"/configurations")
     project_dirs.append(project_name+"/docs")
     project_dirs.append(project_name+"/rtl/verilog/"+project_name)

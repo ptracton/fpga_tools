@@ -19,6 +19,7 @@
 import sys
 import os
 import config_file
+import glob
 
 class sim_tool:
     '''
@@ -62,6 +63,9 @@ class sim_tool:
 
         ## This is the path to the test cases 
         self.test_path="../../tests/"            
+
+        ## Keep track of building the FW
+        self.built_firmware = False
         
         return
 
@@ -103,4 +107,52 @@ class sim_tool:
         print "OVER RIDE THIS FUNCTION!"
         return
 
-    
+    ################################################################################
+    def find_verilog_files(self, path):
+        verilog_files = []
+        os.chdir(path)
+        for files in glob.glob("*.v"):
+            if (files != "stimulus.v"):
+                print os.getcwd()+"/"+files
+                verilog_files.append(os.getcwd()+"/"+files)
+
+        os.chdir("..")
+        return verilog_files
+
+    ################################################################################
+    def build_firmware(self):
+        print "Building Firmware"
+        
+        if (os.path.exists("../src/Makefile")):
+            print "Found Makefile, build firmware"
+            make_options = "TEST_NAME="+self.test_name+" TECHNOLOGY="+self.fpga_type
+
+
+            simulator = ""
+            if (self.opts.modelsim):
+                simulator = "modelsim"
+            else:
+                if (self.opts.isim):
+                    simulator = "isim"
+                else:
+                    if (self.opts.icarus):
+                        simulator = "icarus"                
+                    else:
+                        if (self.opts.cver):
+                            simulator = "cver"
+                        else:
+                            if (self.opts.ncverilog):
+                                simulator = "ncverilog"                
+                
+            make_options += " SIMULATOR="+simulator
+
+            command = "make -f ../src/Makefile "+make_options
+            print command
+            os.system(command)
+            
+            self.built_firmware = True
+        else:
+            print "No Firmware to build"
+            self.built_firmware = False
+            
+        return
