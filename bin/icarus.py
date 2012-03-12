@@ -177,14 +177,13 @@ class icarus(sim_tool.sim_tool):
             print "Terminate simulation"
             sys.exit(1)
 
-
         ##
         ## If --gui is specified, start GKTWAVE with the dump file and any wave file with the right name
         ## in the right location
         ##
         if self.opts.gui:
-            print "RUNNING GUI GTKWAVE"
-            gui_wave = self.cfg.root+"/tests/"+self.test_name+".wav.sav"
+            print "RUNNING GUI GTKWAVE " + os.getcwd()
+            gui_wave = self.cfg.root+"/tests/"+self.test_name+".sav"
             if not os.path.exists(gui_wave):
                 print gui_wave + " FILE NOT FOUND"
                 gui_wave = ""
