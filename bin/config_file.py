@@ -46,6 +46,10 @@ class config_file:
         self.list_synthesis_files = []
         self.list_include_dirs = [] 
 
+        self.core_simulation_files = []
+        self.core_synthesis_files = []
+        self.core_include_dirs = [] 
+
         self.project = ""
         self.testbench = ""
         self.testbench_instance = ""
@@ -53,8 +57,14 @@ class config_file:
 
         self.xilinx = fpga.fpga()
         self.altera = fpga.fpga()
-        self.asic = fpga.fpga()
-        
+        self.asic = fpga.fpga()   
+
+        try:
+            self.fpga_cores = xilinx = os.environ['FPGA_CORES']
+        except:
+            print "FPGA CORES IS NOT DEFINED!  Terminate Program\n"
+            sys.exit(1)
+
         self.parse_file()
         
         return
@@ -114,8 +124,6 @@ class config_file:
                     self.design_top_level=design.group(1).lstrip()
 
 
-
-
                 include = re.search('^INCLUDE:(.*)', i)
                 if include:
                     print "Include = " + include.group(1).lstrip()
@@ -131,6 +139,21 @@ class config_file:
                     print "Simulation = " + simulation.group(1).lstrip()
                     self.list_simulation_files.append(simulation.group(1).lstrip())
                     
+
+                core_include = re.search('^FPGA_CORE_INCLUDE:(.*)', i)
+                if core_include:
+                    print "Core Include = " + self.fpga_cores+"/"+core_include.group(1).lstrip()
+                    self.core_include_dirs.append(self.fpga_cores+"/"+core_include.group(1).lstrip())
+
+                core_synthesis = re.search('^FPGA_CORE_SYNTHESIS:(.*)', i)
+                if core_synthesis:
+                    print "Core Synthesis = " + self.fpga_cores+"/"+core_synthesis.group(1).lstrip()
+                    self.core_synthesis_files.append(self.fpga_cores+"/"+core_synthesis.group(1).lstrip())
+                    
+                core_simulation = re.search('^FPGA_CORE_SIMULATION:(.*)', i)
+                if core_simulation:
+                    print "Core Simulation = " + self.fpga_cores+"/"+core_simulation.group(1).lstrip()
+                    self.core_simulation_files.append(self.fpga_cores+"/"+core_simulation.group(1).lstrip())
 
 
                 altera_include = re.search('^ALTERA_INCLUDE:(.*)', i)

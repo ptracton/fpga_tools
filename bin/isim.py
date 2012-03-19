@@ -86,6 +86,9 @@ class isim(sim_tool.sim_tool):
         for i in self.cfg.list_include_dirs:
             include += " -i " + root+i.strip("'")
 
+        for i in self.cfg.core_include_dirs:
+            include += " -i " + i.strip("'")            
+
         ## If we are running a XILINX simulation, handle the xilinx specific details
         if self.opts.xilinx:
 
@@ -146,6 +149,15 @@ class isim(sim_tool.sim_tool):
             f.write("verilog work " + modelsim+ "/altera/verilog/src/altera_mf.v\n")
 
 
+        ## Write out the FPGA_CORES files
+        for i in self.cfg.core_simulation_files:
+            f.write("verilog work  "+i.strip("'")+" " + include +"\n")
+
+        for i in self.cfg.core_synthesis_files:
+            f.write("verilog work  "+i.strip("'")+" " + include +"\n")
+
+
+
         ## write out the generic files that work for ASIC/ALTERA/XILINX
         for i in self.cfg.list_simulation_files:
             f.write("verilog work  "+root+i.strip("'")+" " + include +"\n")
@@ -185,7 +197,12 @@ class isim(sim_tool.sim_tool):
         ## There is a problem with isim and icarus.  They use different and incompatible GLIBC
         ## Make sure isim gets the right one
         ##
-        xilinx = os.environ['XILINX']
+        try:
+            xilinx = os.environ['XILINX']
+        except:
+            print "XILINX Environment variable is not defined.  Terminate program\n"
+            sys.exit(1)
+            
         xilinx += "/../"
         common = xilinx+"common/lib/"+lin
         ise = xilinx+"ISE/lib/"+lin
