@@ -40,6 +40,8 @@ if __name__ == '__main__':
     ##
     parser.add_option("-t", "--tests", action="store",      dest="test_list", help="List of tests to run",)
     parser.add_option(      "--all",   action="store_true", dest="all",       help="Run all tools and technologies",)
+    parser.add_option(      "--all_tools",   action="store_true", dest="all_tools",       help="Run all tools and specified technology",)
+    parser.add_option(      "--all_techs",   action="store_true", dest="all_techs",       help="Run all tech and specified tools",)
 
 
     ##
@@ -95,6 +97,17 @@ if __name__ == '__main__':
         opts.xilinx=True
         opts.altera=True
 
+    if opts.all_tools:
+        opts.modelsim=True
+        opts.isim=True
+        opts.icarus=True
+#        opts.cver=True   ## CVER tends to fail on altera or xilinx supplied files.
+        opts.ncverilog=True
+
+    if opts.all_techs:
+        opts.asic=True
+        opts.xilinx=True
+        opts.altera=True
 
     ##
     ## Must choose at least 1 tool to use for regression
@@ -223,5 +236,8 @@ if __name__ == '__main__':
     ##
     ## All done, terminate program
     ##
+    print("\n\nTOTAL TESTS: %d\n" % tests_total)
+    print("TOTAL PASS: %d %f\n" % (tests_pass, percent_pass))
+    print("TOTAL FAIL: %d %f\n" % (tests_fail, percent_fail))    
     print "\n\nRegression All Done!\n"    
     sys.exit(0)

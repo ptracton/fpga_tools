@@ -125,6 +125,9 @@ class ncverilog(sim_tool.sim_tool):
             for i in self.cfg.asic.synthesis_files:
                 f.write(root+i.strip("'")+"\n")
 
+        for i in self.cfg.core_include_dirs:
+            f.write("+incdir+"+i.strip("'")+"\n")
+
         for i in self.cfg.list_include_dirs:
             f.write("+incdir+"+root+i+"\n")
 
@@ -135,6 +138,12 @@ class ncverilog(sim_tool.sim_tool):
             f.write(root+i.strip("'")+"\n")
 
         for i in verilog_files:
+            f.write(i.strip("'")+"\n")
+            
+        for i in self.cfg.core_simulation_files:
+            f.write(i.strip("'")+"\n")
+
+        for i in self.cfg.core_synthesis_files:
             f.write(i.strip("'")+"\n")
 
         f.close()        

@@ -89,6 +89,10 @@ class modelsim(sim_tool.sim_tool):
         include_string = ""
         for i in self.cfg.list_include_dirs:
             include_string += "+incdir+"+root+str(i).strip("['],")+" "
+            
+        for i in self.cfg.core_include_dirs:
+            include_string += "+incdir+"+i.strip("['],")+" "
+
         print include_string
 
         switch_string = ""
@@ -167,6 +171,12 @@ class modelsim(sim_tool.sim_tool):
             f.write("vlog "+root+i.strip("'") + " " + include_string+" " + switch_string + " \n")
 
         for i in verilog_files:
+            f.write("vlog "+i.strip("'") + " " + include_string+" " + switch_string + " \n")
+
+        for i in self.cfg.core_simulation_files:
+            f.write("vlog "+i.strip("'") + " " + include_string+" " + switch_string + " \n")
+
+        for i in self.cfg.core_synthesis_files:
             f.write("vlog "+i.strip("'") + " " + include_string+" " + switch_string + " \n")
 
         f.write("vsim -voptargs=+acc work."+self.cfg.testbench+" " +switch_string+ " " +library+" \n")
