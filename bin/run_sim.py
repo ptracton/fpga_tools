@@ -58,7 +58,7 @@ if __name__ == '__main__':
     ##
     parser.add_option("-m", "--modelsim",  dest="modelsim", action='store_true', help="simulate using Altera Modelsim")
     parser.add_option("-i", "--isim",      dest="isim",     action='store_true', help="simulate using Xilinx Isim")
-    parser.add_option("-v", "--verilog",   dest="icarus",   action='store_true', help="simulate using Icarus Verilog")
+    parser.add_option("-v", "--icarus",    dest="icarus",   action='store_true', help="simulate using Icarus Verilog")
     parser.add_option("-c", "--cver",      dest="cver",     action='store_true', help="simulate using GPL cver")
     parser.add_option("-n", "--ncverilog", dest="ncverilog", action='store_true', help="simulate using Cadence NC-Verilog")
 
@@ -147,6 +147,9 @@ if __name__ == '__main__':
     
     ## Run the simulation
     Sim.run_simulation()
+
+    ## Signal that the simulation has completed running
+    Sim.simulation_complete()
     
     ##
     ## All done, terminate program
