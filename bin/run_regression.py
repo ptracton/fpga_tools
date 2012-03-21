@@ -38,7 +38,8 @@ if __name__ == '__main__':
     ##
     ## 
     ##
-    parser.add_option("-t", "--tests", action="store", dest="test_list", help="List of tests to run",)
+    parser.add_option("-t", "--tests", action="store",      dest="test_list", help="List of tests to run",)
+    parser.add_option(      "--all",   action="store_true", dest="all",       help="Run all tools and technologies",)
 
 
     ##
@@ -81,6 +82,18 @@ if __name__ == '__main__':
         print opts
         print args
 
+    ##
+    ## A quick and easy way to run all of the simulations without having to enter each individual switch
+    ##
+    if opts.all:
+        opts.modelsim=True
+        opts.isim=True
+        opts.icarus=True
+#        opts.cver=True   ## CVER tends to fail on altera or xilinx supplied files.
+        opts.ncverilog=True
+        opts.asic=True
+        opts.xilinx=True
+        opts.altera=True
 
 
     ##
@@ -194,7 +207,7 @@ if __name__ == '__main__':
             reg_log.write("\tPASSED")
             tests_pass = tests_pass + 1
         else:
-            reg_log.write("\tFAILED")
+            reg_log.write("\tFAILED *** ")
             tests_fail = tests_fail + 1
 
     percent_pass = (float(tests_pass) / float(tests_total)) * 100
