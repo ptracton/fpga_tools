@@ -108,6 +108,13 @@ class sim_tool:
         return
 
     ################################################################################
+    def simulation_complete(self):
+        complete = self.sim_dir+"/simulation_complete"
+        command = "touch " + complete
+        os.system(command)
+        return
+
+    ################################################################################
     def find_verilog_files(self, path):
         verilog_files = []
         os.chdir(path)
