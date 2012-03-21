@@ -185,8 +185,11 @@ class ncverilog(sim_tool.sim_tool):
                        
             gui_executable = self.get_executable("simvision")
             command = gui_executable +" -input " + gui_wave
+            args = " -input " + gui_wave
             print command
-            os.system(command)            
+#            os.spawnlp(os.P_NOWAIT, gui_executable, args)
+            os.system(command)
+
 
         ## go back up to the level we started at
         os.chdir("..")
