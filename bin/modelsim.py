@@ -103,7 +103,7 @@ class modelsim(sim_tool.sim_tool):
         if self.opts.xilinx:
 
             ## append a switch so the sim has a define for XILINX
-            self.switch.append("XILINX")
+            switch_string += " +define+XILINX "
 
             xilinx = os.getenv("XILINX")
             glbl_v = xilinx+"/verilog/src/glbl.v"
@@ -122,7 +122,7 @@ class modelsim(sim_tool.sim_tool):
         if self.opts.asic:
 
             ## add a define for ASIC so the sims knows what it is running
-            self.switch.append("ASIC")
+            switch_string += " +define+ASIC "
             
             ## write out the ASIC specific include, simulation and synthesis files
             for i in self.cfg.asic.simulation_files:
@@ -136,7 +136,7 @@ class modelsim(sim_tool.sim_tool):
         ## We were thinking that this should be possible, and it is!
         if self.opts.altera:
             ## add a define for ALTERA so the sims knows what it is running
-            self.switch.append("ALTERA")
+            switch_string += " +define+ALTERA "
 
             ## Need to have altera's modelsim installed so we can grab some files from it
             ## Need to have an environment variable that points to the install so we can find them

@@ -163,3 +163,96 @@ class sim_tool:
             self.built_firmware = False
             
         return
+
+    
+    ################################################################################
+    def create_score_file(self):
+
+        try:
+            f = open(self.sim_dir+"/score.f", 'w')
+        except:
+            print "Failed to open score.f file"
+            sys.exit(1)
+
+        f.write("-i "+self.cfg.testbench+"."+self.cfg.testbench_instance+"\n")
+        f.write("-t "+self.cfg.design_top_level+"\n")
+        f.write("-o "+self.sim_dir+"/score_output.txt\n")
+        f.write("-vcd "+self.sim_dir+"/dump.vcd\n")
+        f.write("-I "+self.sim_dir+"\n")
+
+        if self.opts.asic:
+            for i in self.cfg.asic.include_dirs:
+                f.write("-I " + self.cfg.root+ i.rstrip("[']")+"\n")
+            for i in self.cfg.asic.simulation_files:
+                f.write("-v " + self.cfg.root+ i.rstrip("[']")+"\n")
+            for i in self.cfg.asic.synthesis_files:
+                f.write("-v " + self.cfg.root+ i.rstrip("[']")+"\n")
+
+        if self.opts.xilinx:
+            for i in self.cfg.xilinx.include_dirs:
+                f.write("-I " +  self.cfg.root+i.rstrip("[']")+"\n")
+            for i in self.cfg.xilinx.simulation_files:
+                f.write("-v " + self.cfg.root+ i.rstrip("[']")+"\n")
+            for i in self.cfg.xilinx.synthesis_files:
+                f.write("-v " + self.cfg.root+ i.rstrip("[']")+"\n")
+
+        if self.opts.altera:
+            for i in self.cfg.altera.include_dirs:
+                f.write("-I " +  self.cfg.root+i.rstrip("[']")+"\n")
+            for i in self.cfg.altera.simulation_files:
+                f.write("-v " +  self.cfg.root+i.rstrip("[']")+"\n")
+            for i in self.cfg.altera.synthesis_files:
+                f.write("-v " + self.cfg.root+i.rstrip("[']")+"\n")
+
+        for i in self.cfg.list_include_dirs:
+            f.write("-I " + self.cfg.root+ i.rstrip("[']")+"\n")
+        for i in self.cfg.list_simulation_files:
+            f.write("-v " + self.cfg.root+ i.rstrip("[']")+"\n")
+        for i in self.cfg.list_synthesis_files:
+            f.write("-v " + self.cfg.root+ i.rstrip("[']")+"\n")
+
+        for i in self.cfg.core_include_dirs:
+            f.write("-I " + i.rstrip("[']")+"\n")
+        for i in self.cfg.core_simulation_files:
+            f.write("-v " +i.rstrip("[']")+"\n")
+        for i in self.cfg.core_synthesis_files:
+            f.write("-v " +i.rstrip("[']")+"\n")            
+                
+        f.close()
+        
+        return
+
+
+    ################################################################################
+    def create_report_file(self):
+        
+        try:
+            f = open(self.sim_dir+"/report.f", 'w')
+        except:
+            print "Failed to open score.f file"
+            sys.exit(1)
+
+        f.write("-m lctfram \n")
+        f.write("-o "+self.sim_dir+"/report.txt")
+        f.close()
+        
+        return
+    
+
+    ################################################################################
+    def run_covered(self):
+        covered = self.get_executable("covered")
+
+        self.create_score_file()
+        command = covered + " score -f "+self.sim_dir+"/score.f"
+        print command
+        os.system(command)
+
+        self.create_report_file()
+        command = covered + " report -f "+self.sim_dir+"/report.f "+self.sim_dir+"/score_output.txt"
+        print command
+        os.system(command)        
+        
+        return
+
+    

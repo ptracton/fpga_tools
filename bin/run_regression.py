@@ -42,6 +42,7 @@ if __name__ == '__main__':
     parser.add_option(      "--all",   action="store_true", dest="all",       help="Run all tools and technologies",)
     parser.add_option(      "--all_tools",   action="store_true", dest="all_tools",       help="Run all tools and specified technology",)
     parser.add_option(      "--all_techs",   action="store_true", dest="all_techs",       help="Run all tech and specified tools",)
+    parser.add_option(      "--coverage", dest="coverage", action='store_true', help="Run covered code coverage tool on this simulation")    
 
 
     ##
@@ -92,7 +93,7 @@ if __name__ == '__main__':
         opts.isim=True
         opts.icarus=True
 #        opts.cver=True   ## CVER tends to fail on altera or xilinx supplied files.
-        opts.ncverilog=True
+#        opts.ncverilog=True
         opts.asic=True
         opts.xilinx=True
         opts.altera=True
@@ -102,7 +103,7 @@ if __name__ == '__main__':
         opts.isim=True
         opts.icarus=True
 #        opts.cver=True   ## CVER tends to fail on altera or xilinx supplied files.
-        opts.ncverilog=True
+#        opts.ncverilog=True
 
     if opts.all_techs:
         opts.asic=True
@@ -198,7 +199,7 @@ if __name__ == '__main__':
     for i in test_list:
         for tool in tools_list:
             for tech in technology_list:
-                new_test = test_case.test_case(test_name=i, tool=tools[tool], tech=technology[tech])
+                new_test = test_case.test_case(test_name=i, tool=tools[tool], tech=technology[tech], coverage=opts.coverage)
                 test_cases.append(new_test)
                 del new_test
                 

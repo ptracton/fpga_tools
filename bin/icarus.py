@@ -82,7 +82,8 @@ class icarus(sim_tool.sim_tool):
         
         if self.opts.xilinx:
             print "ICARUS XILINX\n"
-            f.write("+libext+.v\n")
+            self.switch.append("XILINX")
+            f.write("+libext+.v\n")            
             xilinx = os.getenv("XILINX")
             f.write("-y " + xilinx + "/verilog/src/unisims/\n")
             f.write("-y " + xilinx + "/verilog/src/simprims/\n")
@@ -101,6 +102,7 @@ class icarus(sim_tool.sim_tool):
             altera = os.getenv("ALTERA")
             modelsim = os.getenv("MODELSIM")
 
+            self.switch.append("ALTERA")
             f.write("-y " + modelsim+ "/altera/verilog/src\n")
             f.write("+incdir+" + modelsim+ "/altera/verilog/src\n")
             f.write(modelsim+ "/altera/verilog/src/altera_mf.v\n")
@@ -113,6 +115,7 @@ class icarus(sim_tool.sim_tool):
                 f.write(root+i.strip("'") +"\n")
 
         if self.opts.asic:
+            self.switch.append("ASIC")
             for i in self.cfg.asic.include_dirs:
                 f.write("+incdir+"+root+i+"\n")
 

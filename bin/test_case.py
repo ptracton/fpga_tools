@@ -24,13 +24,14 @@ class test_case:
     '''
     '''
     ############################################################################
-    def __init__(self, test_name="", tool="", tech=""):
+    def __init__(self, test_name="", tool="", tech="", coverage=""):
 
         self.test_name = test_name
         self.test_status = False
         self.tool = tool
         self.tech = tech
         self.sim_dir = self.test_name+"_"+self.tool+"_"+self.tech
+        self.coverage = coverage
 
     ############################################################################
     def sim_passed(self):
@@ -59,7 +60,11 @@ class test_case:
     ############################################################################
     def run(self):
         executable = "run_sim.py"
-        process = subprocess.Popen([executable, "--"+self.tool, "--"+self.tech, self.test_name ], shell=False).wait()
+
+        if self.coverage:
+            process = subprocess.Popen([executable, "--"+self.tool, "--"+self.tech,"--coverage", self.test_name ], shell=False).wait()
+        else:
+            process = subprocess.Popen([executable, "--"+self.tool, "--"+self.tech, self.test_name ], shell=False).wait()
         return
     
     ############################################################################

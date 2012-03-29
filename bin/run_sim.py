@@ -70,8 +70,9 @@ if __name__ == '__main__':
     ##
     ## Support switches.  They handle various tasks
     ##
-    parser.add_option("-g", "--gui",     dest="gui",     action='store_true', help="automatically start the GUI waveform viewer")    
-    parser.add_option("-d", "--debug",   dest="debug",   action='store_true', help="turns on debugging print statements")
+    parser.add_option("-g", "--gui",      dest="gui",      action='store_true', help="automatically start the GUI waveform viewer")
+    parser.add_option(      "--coverage", dest="coverage", action='store_true', help="Run covered code coverage tool on this simulation")    
+    parser.add_option("-d", "--debug",    dest="debug",    action='store_true', help="turns on debugging print statements")
     
     ##
     ## Get the options dictionary and list of arguments passed in from CLI
@@ -150,6 +151,10 @@ if __name__ == '__main__':
 
     ## Signal that the simulation has completed running
     Sim.simulation_complete()
+
+    ## If the switch is thrown for code coverage, run it now
+    if opts.coverage:
+        Sim.run_covered()
     
     ##
     ## All done, terminate program
