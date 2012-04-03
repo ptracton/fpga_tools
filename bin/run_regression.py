@@ -240,5 +240,19 @@ if __name__ == '__main__':
     print("\n\nTOTAL TESTS: %d\n" % tests_total)
     print("TOTAL PASS: %d %f\n" % (tests_pass, percent_pass))
     print("TOTAL FAIL: %d %f\n" % (tests_fail, percent_fail))    
-    print "\n\nRegression All Done!\n"    
+    print "\n\nRegression All Done!\n"
+
+    if opts.coverage:
+        dirs = os.walk('.').next()[1]
+        string = ""
+        for i in dirs:
+            string += i+"/score_output.txt "
+
+        command = "covered merge "+ string + "-o regression_merge.txt"
+        print command
+        os.system(command)
+
+        command = "covered report -o regression_coverage.txt regression_merge.txt"
+        os.system(command)        
+    
     sys.exit(0)

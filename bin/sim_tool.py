@@ -179,6 +179,9 @@ class sim_tool:
         f.write("-o "+self.sim_dir+"/score_output.txt\n")
         f.write("-vcd "+self.sim_dir+"/dump.vcd\n")
         f.write("-I "+self.sim_dir+"\n")
+        f.write("-y "+self.sim_dir+"\n")
+
+        print self.opts
 
         if self.opts.asic:
             for i in self.cfg.asic.include_dirs:
@@ -189,12 +192,27 @@ class sim_tool:
                 f.write("-v " + self.cfg.root+ i.rstrip("[']")+"\n")
 
         if self.opts.xilinx:
+            f.write("-D XILINX=1\n")
+            f.write("-e FDR\n")
+            f.write("-e FDS\n")
+            f.write("-e FD \n")
+            f.write("-e FDE\n")
+            f.write("-e FDRE\n")
+            f.write("-e FDRSE\n")
+            f.write("-e FDRS\n")
+            f.write("-e RAMB16_S18\n")
+            xilinx = os.getenv("XILINX")
             for i in self.cfg.xilinx.include_dirs:
                 f.write("-I " +  self.cfg.root+i.rstrip("[']")+"\n")
             for i in self.cfg.xilinx.simulation_files:
                 f.write("-v " + self.cfg.root+ i.rstrip("[']")+"\n")
             for i in self.cfg.xilinx.synthesis_files:
                 f.write("-v " + self.cfg.root+ i.rstrip("[']")+"\n")
+            f.write("-y " + xilinx + "/verilog/src/unisims/\n")
+            f.write("-y " + xilinx + "/verilog/src/simprims/\n")
+            f.write("-y " + xilinx + "/verilog/src/XilinxCoreLib/\n")
+            f.write("-v " + xilinx + "/verilog/src/glbl.v \n")
+            f.write("-e system_controller \n")                
 
         if self.opts.altera:
             for i in self.cfg.altera.include_dirs:
